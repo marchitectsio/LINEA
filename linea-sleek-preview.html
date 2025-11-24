@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINEA | Cultural Preservation & Community Stewardship</title>
+    <style>
+        :root {
+            --burgundy: #6B2737;
+            --gold: #C4A052;
+            --dark: #2C2C2C;
+            --light: #F5F5F0;
+            --warm: #8B4513;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 600;
+            color: var(--burgundy);
+            letter-spacing: -0.02em;
+        }
+
+        nav {
+            background-color: var(--white);
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid rgba(107, 39, 55, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            font-family: Georgia, serif;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--burgundy);
+            border-bottom-color: var(--gold);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--burgundy) 0%, var(--dark) 100%);
+            color: var(--white);
+            padding: 8rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(196, 160, 82, 0.1) 0%, transparent 50%);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3.75rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+            font-weight: 700;
+        }
+
+        .hero .tagline {
+            font-size: 1.35rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            background-color: var(--burgundy);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--burgundy);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: var(--dark);
+            border-color: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--burgundy);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--burgundy);
+            border: 2px solid var(--burgundy);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--burgundy);
+            color: var(--white);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-alt {
+            background-color: var(--white);
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .pillar-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .pillar-card h3 {
+            color: var(--burgundy);
+            font-size: 1.65rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .team-section {
+            margin-bottom: 4rem;
+        }
+
+        .team-section h3 {
+            font-size: 2rem;
+            color: var(--burgundy);
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: var(--light);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--burgundy), var(--gold));
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .team-member h4 {
+            color: var(--burgundy);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .team-member .role {
+            color: var(--gold);
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { flex-direction: column; gap: 1rem; }
+            nav .container { flex-direction: column; text-align: center; }
+            .pillars-grid, .team-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#home" class="logo">LINEA</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#mission">Mission</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>The Foundation for<br>Intergenerational Continuity</h1>
+            <p class="tagline">"Preserving Cultural Mastery, One Apprentice at a Time"</p>
+            <p>LINEA preserves culture, protects lineage, and creates space for community programming that ensures the stories and structures of today become the inheritance of tomorrow.</p>
+            <div>
+                <a href="#support" class="btn">Support Our Work</a>
+                <a href="#mission" class="btn btn-secondary">Explore Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="mission">
+        <div class="container">
+            <h2>Our Three Pillars</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h3>Cultural Preservation</h3>
+                    <p>We archive stories, document community history, and create permanent records of cultural significance. Our master-apprentice programs ensure knowledge from Fantasy Records era masters is not lost.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Youth Development</h3>
+                    <p>Through AAFC (Artists and Athletes for Change), we house youth leadership programs that train young people in communication, digital skills, and civic engagement—creating alternative pathways beyond traditional college routes.</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Artist Support</h3>
+                    <p>Our AAIR (Artist Architect in Residence) program provides structure and mentorship for artists working in heritage and community, centered at Historic Jones Memorial United Methodist Church in San Francisco.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt" id="team">
+        <div class="container">
+            <h2>Our Team</h2>
+            
+            <div class="team-section">
+                <h3>Leadership Team</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-photo">RK</div>
+                        <h4>Rashida Knox</h4>
+                        <p class="role">Founder & Executive Director</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">👨‍🍳</div>
+                        <h4>Chef Brenda Davis Smith</h4>
+                        <p class="role">Culinary Director</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">SJ</div>
+                        <h4>Scott Jespersen</h4>
+                        <p class="role">Director of Production & Technology</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">KK</div>
+                        <h4>Kiminou Knox</h4>
+                        <p class="role">AAFC Technical Director</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">NO</div>
+                        <h4>Nkei Oruche</h4>
+                        <p class="role">Cultural Ambassador</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-section">
+                <h3>Advisory Board</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-photo">JY</div>
+                        <h4>Joanna Young</h4>
+                        <p class="role">Strategic Development</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">🎵</div>
+                        <h4>Ron Smith</h4>
+                        <p class="role">Music Director</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-section">
+                <h3>Apprenticeship Facilitators</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-photo">👨‍🍳</div>
+                        <h4>Chef Brenda Davis Smith</h4>
+                        <p class="role">Culinary Arts</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">🎵</div>
+                        <h4>Ron Smith</h4>
+                        <p class="role">Music Theory</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">🔬</div>
+                        <h4>Annabelle Marie</h4>
+                        <p class="role">Chemistry/STEM</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">🌿</div>
+                        <h4>Marti Shaw</h4>
+                        <p class="role">Wellness</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo">🔧</div>
+                        <h4>Andre</h4>
+                        <p class="role">Skilled Trades</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events">
+        <div class="container">
+            <h2>Upcoming Events</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h3>Ricardo Scales Legacy Concert</h3>
+                    <p><strong>January 11, 2025</strong></p>
+                    <p>Inaugural concert featuring Rashida Knox, Malkia Criswell-Neal, and Sterling Davis.</p>
+                    <p style="margin-top: 1rem;"><strong>Location:</strong> Historic Jones Memorial United Methodist Church, SF</p>
+                    <p style="margin-top: 1rem;"><strong>Tickets:</strong> $50-$150</p>
+                    <p style="margin-top: 1.5rem; text-align: center;">
+                        <a href="mailto:info@linea.org?subject=Concert Tickets Inquiry" class="btn btn-outline">Get Tickets</a>
+                    </p>
+                </div>
+                <div class="pillar-card">
+                    <h3>"At the Table" Dinner Series</h3>
+                    <p>Intimate culinary experience with Chef Brenda Davis Smith.</p>
+                    <p style="margin-top: 1rem;"><strong>Seating:</strong> 12-16 guests</p>
+                    <p><strong>Price:</strong> $200 per person</p>
+                    <p style="margin-top: 1.5rem; text-align: center;">
+                        <a href="mailto:info@linea.org?subject=At the Table Reservation" class="btn btn-outline">Reserve Seat</a>
+                    </p>
+                </div>
+                <div class="pillar-card">
+                    <h3>AAFC Youth Showcase</h3>
+                    <p>Quarterly presentations by AAFC youth cohort showcasing their skills and projects.</p>
+                    <p style="margin-top: 1rem;"><strong>Admission:</strong> Free (donations welcome)</p>
+                    <p style="margin-top: 1.5rem; text-align: center;">
+                        <a href="mailto:info@linea.org?subject=Youth Showcase RSVP" class="btn btn-outline">RSVP</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-alt" id="support">
+        <div class="container">
+            <h2>Support Our Work</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">
+                Fantasy Records era masters won't be here forever. Your support today ensures their knowledge lives on through structured apprenticeships, youth development, and cultural preservation.
+            </p>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h3>Make a Donation</h3>
+                    <p>One-time or recurring donations support apprenticeship programs, youth development, and cultural preservation work.</p>
+                    <p style="margin-top: 1.5rem; text-align: center;">
+                        <a href="mailto:info@linea.org?subject=Donation Inquiry" class="btn">Donate Now</a>
+                    </p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Grant Partnerships</h3>
+                    <p>Foundation and institutional partners help us scale our master-apprentice programs and cultural documentation work.</p>
+                    <p style="margin-top: 1.5rem; text-align: center;">
+                        <a href="mailto:grants@linea.org?subject=Grant Partnership Inquiry" class="btn">Partner With Us</a>
+                    </p>
+                </div>
+                <div class="pillar-card">
+                    <h3>Attend Events</h3>
+                    <p>Purchase tickets to concerts, dinners, and cultural events. Your attendance directly supports our programs.</p>
+                    <p style="margin-top: 1.5rem; text-align: center;">
+                        <a href="#events" class="btn">View Events</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>LINEA</h4>
+                    <p>Cultural Preservation & Community Stewardship</p>
+                    <p>A Division of Marchitects LLC (est. 2016)</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>San Mateo County, CA</p>
+                    <p>Napa Valley, CA</p>
+                    <p><a href="mailto:info@linea.org">info@linea.org</a></p>
+                    <p><a href="mailto:grants@linea.org">grants@linea.org</a></p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <p><a href="#mission">Programs</a></p>
+                    <p><a href="#team">About</a></p>
+                    <p><a href="#events">Events</a></p>
+                    <p><a href="#support">Support</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LINEA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
