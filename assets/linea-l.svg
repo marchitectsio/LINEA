@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">LINEA L favicon</title>
+  <desc id="desc">A burgundy square icon with a gold letter L for LINEA.</desc>
+  <rect width="512" height="512" rx="72" fill="#6B2737"/>
+  <path d="M154 112h86v268h156v72H154z" fill="#C4A052"/>
+  <path d="M240 112h34v234h122v34H240z" fill="#F5F5F0" opacity=".22"/>
+</svg>
